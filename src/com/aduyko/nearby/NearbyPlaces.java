@@ -7,7 +7,6 @@ package com.aduyko.nearby;
 import java.util.Scanner;
 // Importing validator to check for ipv6 address validity
 import org.apache.commons.validator.routines.InetAddressValidator;
-import com.google.gson.*;
 
 /**
  *
@@ -32,6 +31,8 @@ public class NearbyPlaces {
 
             GeolocationHelper geolocationHelper = GeolocationHelper.getInstance();
             Location location = geolocationHelper.findLocation(inputIp);
+            System.out.println(location.getLatitude());
+            System.out.println(location.getLongitude());
 
             GeoNamesHelper geoNamesHelper = GeoNamesHelper.getInstance();
             

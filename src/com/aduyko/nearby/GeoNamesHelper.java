@@ -32,8 +32,8 @@ public class GeoNamesHelper {
         try {
             InputStream input = new FileInputStream("config/config.properties");
             geoNamesProperties.load(input);
-        } catch (IOException exception) {
-            exception.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return geoNamesProperties;
     }
