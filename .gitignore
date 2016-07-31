@@ -1,0 +1,9 @@
+config/config.properties
+#From https://github.com/github/gitignore/blob/master/Global/NetBeans.gitignore
+nbproject/private
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
