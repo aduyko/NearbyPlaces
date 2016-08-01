@@ -16,6 +16,8 @@ public class NearbyPlaces {
 
     /**
      * @param args the command line arguments
+     * args[0] can optionally be the IP you want to find a place near
+     * If it isn't provided, you will be prompted to enter an IP address
      */
     public static void main(String[] args) {
         String inputIp;
@@ -31,16 +33,17 @@ public class NearbyPlaces {
 
             GeolocationHelper geolocationHelper = GeolocationHelper.getInstance();
             Location location = geolocationHelper.findLocation(inputIp);
-            System.out.println(location.getLatitude());
-            System.out.println(location.getLongitude());
 
             GeoNamesHelper geoNamesHelper = GeoNamesHelper.getInstance();
+            location = geoNamesHelper.findNearbyLocation(location);
             
+            System.out.println(location.getNearbyPlaceString());
         } else {
             System.err.print("Input IP '" + inputIp + "' is invalid.");            
         }
     }
     
+    // Gets the user IP from the command line
     public static String getInputIp() {
         System.out.println("Please specify an Ip address to find nearby places:");
         Scanner scanner = new Scanner(System.in);
@@ -48,6 +51,8 @@ public class NearbyPlaces {
         return inputIp;
     }
     
+    
+    // Confirm that the user entered a valid IPv4 or IPv6 IP.
     public static Boolean validateIp(String inputIp) {
         InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
         Boolean isValidIpAddress = inetAddressValidator.isValid(inputIp);

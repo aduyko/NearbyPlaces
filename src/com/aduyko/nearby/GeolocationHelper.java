@@ -31,7 +31,7 @@ public class GeolocationHelper {
     
     public static Location findLocation(String inputIp) {
         Location location = new Location(inputIp);
-        Document xmlGeolocation = getGeolocation(inputIp);
+        Document xmlGeolocation = getGeolocationDoc(inputIp);
         if(xmlGeolocation != null) {
             Element latitude =
                 (Element) xmlGeolocation.getElementsByTagName("Latitude").item(0);
@@ -43,7 +43,7 @@ public class GeolocationHelper {
         return location;
     }
     
-    public static Document getGeolocation(String inputIp) {
+    public static Document getGeolocationDoc(String inputIp) {
         String geolocationUrl = geolocationBaseUrl + inputIp;
         Document xmlResponse = null;
         try {
