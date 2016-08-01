@@ -96,5 +96,4 @@ public class Location {
     public void setLocationDistance(String locationDistance) {
         this.locationDistance = locationDistance;
     }
-    
 }

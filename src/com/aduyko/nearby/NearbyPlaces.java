@@ -35,6 +35,8 @@ public class NearbyPlaces {
             Location location = geolocationHelper.findLocation(inputIp);
 
             GeoNamesHelper geoNamesHelper = GeoNamesHelper.getInstance();
+            // Right now it seems like it would be overengineered to keep a 
+            // geolocated IP location and the nearby location separate
             location = geoNamesHelper.findNearbyLocation(location);
             
             System.out.println(location.getNearbyPlaceString());
@@ -51,12 +53,10 @@ public class NearbyPlaces {
         return inputIp;
     }
     
-    
     // Confirm that the user entered a valid IPv4 or IPv6 IP.
     public static Boolean validateIp(String inputIp) {
         InetAddressValidator inetAddressValidator = InetAddressValidator.getInstance();
         Boolean isValidIpAddress = inetAddressValidator.isValid(inputIp);
         return isValidIpAddress;
     }
-
 }

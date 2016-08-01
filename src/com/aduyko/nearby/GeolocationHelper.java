@@ -69,5 +69,4 @@ public class GeolocationHelper {
         }
         return doc;
     }
-    
 }
